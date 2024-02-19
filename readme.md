@@ -14,3 +14,20 @@ Consigli:
 - preparate lista strumenti
 - pensate prima al caso base e poi vi complicate la vita
 - zero grafica solo js.
+
+## STEPS
+- Mi servono i 2 dati (km da percorrere ed età del passeggero) compilabili dall'utente in input
+- Trasformare i dati di input di tipo stringa in tipo number
+- Salvarli in due variabili
+- Calcolare il Prezzo del biglietto
+- Applicare eventuali sconti in base all'età inserita
+- Stampare il prezzo finale del biglietto
+
+## TOOLS
+- prompt
+- number()
+- const/let
+- operatori matematici 
+- if/else
+- console.log()
+- humanFormat() [? Strumento da ricercare sul web e capirne il funzionamento]
