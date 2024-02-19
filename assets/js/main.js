@@ -10,8 +10,8 @@ const distance = Number(prompt("Inserire i Kilometri da percorrere"));
 // Calcolo il prezzo del biglietto salvandolo in una variabile
 
 const price_per_km = 0.21;
-let ticketPrice = distance * price_per_km;
-//console.log(ticketPrice);
+const ticketPrice = distance * price_per_km;
+//console.log(typeof ticketPrice);
 
 // Applico eventuali sconti in base all'età inserita
 
@@ -20,27 +20,34 @@ let ticketPrice = distance * price_per_km;
 -ALTRIMENTI SE età > 60 sconto 40%
 */
 
-let discuontedPrice;
+let discountedPrice;
 
 if (userAge < 18) {
-    discuontedPrice = ticketPrice - (ticketPrice * 0.2);
-    console.log(
-        new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR' }).format(
-          discuontedPrice,
-        ),
-      );
+    const young_discount = ticketPrice * 0.2;
+    discountedPrice = ticketPrice - young_discount;
+    console.log(`
+    Prezzo del biglietto standard :  ${new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR' }).format(
+        ticketPrice,
+    )} 
+    Prezzo scontato per i minori di 18 anni : ${new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR' }).format(
+        discountedPrice,
+    )}
+        `);
 } else if (userAge >= 65) {
-    discuontedPrice = ticketPrice - (ticketPrice * 0.6);
-    console.log(
-        new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR' }).format(
-          discuontedPrice,
-        ),
-      );
-} else{
-    console.log(
-        new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR' }).format(
-          ticketPrice,
-        ),
-      );
+    const old_discount = ticketPrice * 0.6;
+    discountedPrice = ticketPrice - old_discount;
+    console.log(`
+    Prezzo del biglietto standard :  ${new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR' }).format(
+        ticketPrice,
+    )} 
+    Prezzo scontato per gli over 65 : ${new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR' }).format(
+        discountedPrice,
+    )}
+        `);
+} else {
+    console.log(`
+    Prezzo del biglietto : ${new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR' }).format(
+        ticketPrice,
+    )}
+        `);
 }
-
