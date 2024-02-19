@@ -12,3 +12,35 @@ const distance = Number(prompt("Inserire i Kilometri da percorrere"));
 const price_per_km = 0.21;
 let ticketPrice = distance * price_per_km;
 //console.log(ticketPrice);
+
+// Applico eventuali sconti in base all'età inserita
+
+/* 
+-SE età < 18 sconto 20%
+-ALTRIMENTI SE età > 60 sconto 40%
+*/
+
+let discuontedPrice;
+
+if (userAge < 18) {
+    discuontedPrice = ticketPrice - (ticketPrice * 0.2);
+    console.log(
+        new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR' }).format(
+          discuontedPrice,
+        ),
+      );
+} else if (userAge >= 65) {
+    discuontedPrice = ticketPrice - (ticketPrice * 0.6);
+    console.log(
+        new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR' }).format(
+          discuontedPrice,
+        ),
+      );
+} else{
+    console.log(
+        new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR' }).format(
+          ticketPrice,
+        ),
+      );
+}
+

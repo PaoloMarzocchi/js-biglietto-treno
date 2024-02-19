@@ -30,4 +30,4 @@ Consigli:
 - operatori matematici 
 - if/else
 - console.log()
-- humanFormat() [? Strumento da ricercare sul web e capirne il funzionamento]
+- intl.NumberFormat()
