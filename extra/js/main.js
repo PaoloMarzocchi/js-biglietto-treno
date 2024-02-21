@@ -3,8 +3,8 @@ const number_passengers = Number(prompt("Inserire il numero di passeggeri"))
 
 let userAge = [];
 
-for (let i = 0; i < number_passengers; i++) {
-    age = (Number(prompt("Inserire l'età del passeggero " + i)));
+for (let i = 1; i <= number_passengers; i++) {
+   let age = (Number(prompt("Inserire l'età del passeggero " + i)));
     userAge.push(age)
 }
 console.log(userAge);
@@ -27,39 +27,34 @@ const ticketPrice = distance * price_per_km;
 -ALTRIMENTI SE età > 60 sconto 40%
 */
 
-let discountedPrice;
+let messageOutput = "Tipologie di biglietti in base all'età : ";
+let typeTicket;
 let totalPrice = 0;
 for (let age of userAge) {
-    if (age < 18) {
+    if (userAge < 18) {
         const young_discount = ticketPrice * 0.2;
-        discountedPrice = ticketPrice - young_discount;
-        console.log(`
-        Prezzo scontato per i minori di 18 anni : ${new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR' }).format(
-            discountedPrice,
-        )}
-        `);
-        totalPrice = totalPrice + discountedPrice;   
-        
-    } else if (age >= 65) {
-        const old_discount = ticketPrice * 0.6;
-        discountedPrice = ticketPrice - old_discount;
-        console.log(`
-        Prezzo scontato per gli over 65 : ${new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR' }).format(
-            discountedPrice,
-        )}
-        `);
-        totalPrice = totalPrice + discountedPrice;  
-    } else {
-        console.log(`
-        Prezzo standard : ${new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR' }).format(
-            ticketPrice,
-        )}
-        `);
-        totalPrice = totalPrice + ticketPrice; 
-        
+        ticketPrice = ticketPrice - young_discount;
+        totalPrice += ticketPrice; 
+        typeTicket = 'Biglietto Junior ';
+        messageOutput += typeTicket;
+        //alert(messageOutput + ticketPrice + ' €');
+        console.log(typeTicket);
+    } else if (userAge >= 65) {
+        const old_discount = ticketPrice * 0.4;
+        ticketPrice = ticketPrice - old_discount;
+        totalPrice += ticketPrice; 
+        typeTicket = 'Biglietto Senior ';
+        //alert(messageOutput + ticketPrice + ' €');
+        console.log(typeTicket);
+        messageOutput += typeTicket;
+    } else{
+        totalPrice += ticketPrice; 
+        typeTicket = 'Biglietto standard ';
+        //alert(messageOutput + ticketPrice + ' €');
+        console.log(typeTicket);
+        messageOutput += typeTicket;
     }
 }
 
-console.log(`Total price : ${new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR' }).format(
-    totalPrice,
-)}`);
+console.log(messageOutput);
+alert('Prezzo totale biglietti: ' + totalPrice + ' €')
